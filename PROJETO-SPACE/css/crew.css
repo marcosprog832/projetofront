@@ -1,0 +1,287 @@
+/* =======================================================
+   1. FUNDO E LAYOUT BASE (MOBILE FIRST - SEM CORTES)
+   ======================================================= */
+body.crew {
+    background-image: url('../assets/crew/background-crew-mobile.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    /* Trava a altura na tela do celular para não rolar */
+    height: 100dvh; 
+    overflow: hidden;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+/* O Grid da Tripulação */
+.grid-container--crew {
+    display: grid;
+    /* Mantém a estrutura: Título, Texto, Bolinhas, e o resto para a Imagem */
+    grid-template-rows: min-content min-content min-content 1fr;
+    grid-template-areas: 
+        "title"
+        "content"
+        "dots"
+        "image";
+    
+    width: 100%;
+    height: 100%;
+    
+    /* --- ESPAÇAMENTOS NORMAIS (Texto respira) --- */
+    row-gap: 1.5rem; /* Espaço bom entre os blocos */
+    padding-inline: 1.5rem;
+    padding-top: 6rem; /* Espaço padrão do topo */
+    padding-bottom: 0;
+    
+    text-align: center;
+    justify-items: center;
+}
+
+/* =======================================================
+   2. ELEMENTOS ESPECÍFICOS
+   ======================================================= */
+
+/* Título */
+.numbered-title {
+    grid-area: title;
+    font-family: var(--ff-sans-cond);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--clr-white);
+    margin: 0;
+}
+
+.numbered-title span {
+    margin-right: 0.5em;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+/* Conteúdo de Texto (Normal, sem scroll interno) */
+.crew-details {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; 
+}
+
+.crew-details h2 {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1rem;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.crew-details p.fs-700 {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-family: var(--ff-serif);
+    margin: 0;
+    white-space: nowrap;
+}
+
+.crew-details p:not(.fs-700) {
+    line-height: 1.6;
+    color: var(--clr-light);
+    font-size: 0.95rem;
+    max-width: 45ch;
+    /* Removemos o limite de altura do texto aqui */
+}
+
+/* Bolinhas */
+.dot-indicators {
+    grid-area: dots;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding-top: 1rem; /* Um pouco mais de espaço antes das bolinhas */
+    margin: 0;
+}
+
+.dot-indicators button {
+    cursor: pointer;
+    border: 0;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.17);
+    padding: 0;
+    font-size: 0; 
+    color: transparent;
+}
+
+.dot-indicators button[aria-selected="true"] {
+    background-color: var(--clr-white);
+}
+
+/* --- A CORREÇÃO DA IMAGEM --- */
+.grid-container--crew > picture {
+    grid-area: image;
+    width: 100%;
+    height: 100%; 
+    max-height: 350px !important;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; 
+    position: relative;
+    border-top: 1px solid rgba(66, 64, 64, 0.366);
+    
+    padding-bottom: 1rem; /* Afasta o pé da imagem da borda da tela */
+    padding-inline: 1rem; /* Afasta das laterais também */
+    
+    overflow: hidden; 
+}
+
+.grid-container--crew > picture img {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    
+    /* Garante que a imagem diminua proporcionalmente para caber no espaço */
+    object-fit: contain; 
+    object-position: bottom center;
+}
+/* =======================================================
+   3. TABLET (Telas Médias)
+   ======================================================= */
+@media (min-width: 35em) {
+    body.crew {
+        background-image: url('../assets/crew/background-crew-tablet.jpg');
+    }
+
+    /* No Tablet, a ordem muda: Titulo -> Texto -> Dots -> Imagem (embaixo) */
+    .grid-container--crew {
+        padding-bottom: 0; /* Imagem cola no chão */
+        grid-template-areas: 
+            "title"
+            "content"
+            "dots"
+            "image";
+    }
+
+    .numbered-title {
+        justify-self: start;
+        margin-left: 1rem;
+        font-size: 1.25rem;
+    }
+
+    .crew-details h2 { font-size: 1.5rem; }
+    .crew-details p.fs-700 { font-size: 2.5rem; }
+    
+    .grid-container--crew > picture {
+        max-width: 50%;
+        border-bottom: 0; /* Remove a linha */
+    }
+}
+
+
+
+  /* =======================================================
+   4. DESKTOP (Telas Grandes)
+   ======================================================= */
+@media (min-width: 45em) {
+    body.crew {
+        background-image: url('../assets/crew/background-crew-desktop.jpg');
+        justify-content: center;
+        align-items: center;
+    }
+
+    .grid-container--crew {
+        grid-template-columns: minmax(1rem, 1fr) minmax(0, 35rem) minmax(0, 35rem) minmax(1rem, 1fr);
+        
+        /* Reseta as linhas do Mobile (importante!) */
+        grid-template-rows: auto; 
+        
+        /* Layout complexo do Grid Desktop */
+        grid-template-areas: 
+            ". title title ."
+            ". content image ."
+            ". dots image .";
+            
+        justify-items: start; /* Tudo alinhado à esquerda */
+        text-align: left;
+        column-gap: 2rem;
+        
+        /* Garante altura fixa para layout não pular */
+        max-width: 80rem;
+        width: 100%;
+        margin-inline: auto;
+        
+        /* Reseta paddings do mobile */
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    /* --- RESET DA IMAGEM (IMPORTANTE) --- */
+    /* Isso desfaz as gambiarras que fizemos no Mobile (sombra, tamanho fixo, padding) */
+    .grid-container--crew > picture {
+        grid-area: image;
+        
+        /* 1. DEIXE O CONTAINER OCUPAR A COLUNA INTEIRA */
+        width: 100%;
+        max-width: 100%; /* Era 90%, isso travava o crescimento */
+        
+        justify-self: center;
+        align-self: end; 
+        
+        /* 2. IMPORTANTE: Destrava o corte do mobile */
+        overflow: visible; 
+        padding: 0;
+        border: 0;
+    }
+
+    /* Libera o tamanho da imagem para ficar grande no desktop */
+    .grid-container--crew > picture img {
+        /* Cancela a trava de 300px do celular */
+        max-height: 100% !important; 
+        
+        /* 3. Manda a imagem ocupar todo o espaço do container destravado */
+        width: auto; 
+        max-width: 100%; /* Garante que ela não estoure a tela horizontalmente */
+        
+        /* Se quiser aumentar a altura máxima permitida no monitor */
+        height: auto;
+        max-height: 80vh !important; /* Permite ir até 80% da altura da tela */
+        
+        object-fit: contain;
+    }
+
+    /* --- RESTO DO ESTILO DESKTOP --- */
+
+    /* Título */
+    .numbered-title {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Texto */
+    .crew-details h2 { font-size: 2rem; margin-bottom: 1rem;}
+    .crew-details p.fs-700 { font-size: 3.5rem; margin-bottom: 1.5rem; }
+    .crew-details p:not(.fs-700) { font-size: 1.125rem; line-height: 1.8; max-width: 45ch; }
+
+    /* Bolinhas */
+    .dot-indicators {
+        justify-self: start;
+        margin-top: 2rem; /* Afasta do texto */
+    }
+}
+
+/* =======================================================
+   ANIMAÇÕES (GLOBAL)
+   ======================================================= */
+
+/* Animação suave ao trocar de tripulante */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Aplica a transição nos textos e imagem */
+.crew-details h2, 
+.crew-details p, 
+.grid-container--crew > picture img {
+    transition: opacity 0.3s ease-in-out;
+}

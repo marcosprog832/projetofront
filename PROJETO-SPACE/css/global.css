@@ -1,0 +1,261 @@
+/* =======================================================
+   1. VARIÁVEIS (CORES E FONTES DO PROJETO)
+   ======================================================= */
+:root {
+    /* Cores */
+    --clr-dark: #0B0D17;
+    --clr-light: #D0D6F9;
+    --clr-white: #FFFFFF;
+
+    /* Fontes */
+    --ff-serif: 'Bellefair', serif;
+    --ff-sans-cond: 'Barlow Condensed', sans-serif;
+    --ff-sans-normal: 'Barlow', sans-serif;
+
+    /* Tamanhos de Fonte (Base) */
+    --fs-900: 9.375rem;
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-500: 1.75rem;
+    --fs-400: 1.125rem;
+    --fs-300: 1rem;
+    --fs-200: 0.875rem;
+}
+
+/* =======================================================
+   2. RESET GERAL (LIMPEZA)
+   ======================================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, p, figure, picture {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--ff-sans-normal);
+    font-size: var(--fs-400);
+    color: var(--clr-white);
+    background-color: var(--clr-dark);
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden; /* Evita rolagem lateral */
+}
+
+/* Imagens responsivas por padrão */
+img, picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Removemos o botão 'Skip to content' definitivamente */
+.skip-to-content {
+    display: none !important;
+}
+
+/* =======================================================
+   3. CABEÇALHO E NAVEGAÇÃO (GLOBAL)
+   ======================================================= */
+.primary-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+}
+
+/* --- BOTÃO HAMBURGER (MOBILE) --- */
+.mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    z-index: 9999;
+    right: 1.5rem;
+    top: 2rem;
+    background: transparent;
+    background-image: url('../assets/shared/icon-hamburger.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 2rem;
+    aspect-ratio: 1;
+    border: 0;
+    cursor: pointer;
+}
+
+/* Muda o ícone quando o menu está aberto (se usar JS depois) */
+.mobile-nav-toggle[aria-expanded="true"] {
+    background-image: url('../assets/shared/icon-close.svg');
+}
+
+/* --- MENU DE NAVEGAÇÃO (ESTILO MOBILE) --- */
+.primary-navigation {
+    position: fixed;
+    z-index: 1000;
+    inset: 0 0 0 30%; /* Ocupa 70% da tela na direita */
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(1.5rem); /* Efeito de vidro */
+    
+    flex-direction: column;
+    padding: min(30vh, 10rem) 2rem;
+    margin: 0;
+    list-style: none;
+    
+    /* Esconde o menu inicialmente no mobile */
+    transform: translateX(100%);
+    transition: transform 350ms ease-out;
+}
+
+/* Classe para abrir o menu (via JS) */
+.primary-navigation[data-visible="true"] {
+    transform: translateX(0%);
+}
+
+.primary-navigation li {
+    margin-bottom: 2rem;
+}
+
+.primary-navigation a {
+    text-decoration: none;
+    color: var(--clr-white);
+    font-family: var(--ff-sans-cond);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* =======================================================
+   4. MEDIA QUERIES GLOBAIS (AJUSTES TABLET/DESKTOP DO MENU)
+   ======================================================= */
+/* =======================================================
+   4. MEDIA QUERIES GLOBAIS (REFINAMENTO DESKTOP)
+   ======================================================= */
+@media (min-width: 45em) {
+    /* 1. AJUSTE DO CABEÇALHO PARA COMPORTAR A LINHA */
+    .primary-header {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 2.5rem 0 0 3.5rem !important; /* Espaço oficial do design */
+        position: absolute;
+        width: 100%;
+        top: 0;
+    }
+
+    /* 2. A LINHA HORIZONTAL (FLUTUANTE) */
+    .primary-header::before {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 1px;
+        width: 35%; /* Ajuste para encostar no menu sem sobrepor */
+        background: rgba(255, 255, 255, 0.25);
+        left: 12%; 
+        z-index: 10;
+    }
+
+    /* 3. ESCONDE O BOTÃO HAMBÚRGUER */
+    .mobile-nav-toggle {
+        display: none !important;
+    }
+
+    /* 4. REESTRUTURAÇÃO DO MENU (HORIZONTAL + GLASSMORPHISM) */
+    .primary-navigation {
+        position: static !important;
+        transform: translateX(0) !important;
+        flex-direction: row !important;
+        display: flex !important;
+        gap: clamp(1.5rem, 5vw, 3rem) !important; /* Espaçamento fluido entre nomes */
+        background: rgba(255, 255, 255, 0.05) !important;
+        backdrop-filter: blur(40px);
+        padding: 0 8rem !important;
+        margin: 0 !important;
+        list-style: none;
+    }
+
+    .primary-navigation li {
+        margin-bottom: 0 !important;
+    }
+
+    /* 5. LINKS E EFEITO DE SUBLINHADO (HOVER/ACTIVE) */
+    .primary-navigation a {
+        display: block;
+        padding: 2.5rem 0; /* Cria a altura necessária para a borda na base */
+        border-bottom: 3px solid transparent; /* Reserva o espaço para não pular */
+        transition: border-color 0.3s ease;
+        text-decoration: none;
+        color: var(--clr-white);
+        font-family: var(--ff-sans-cond);
+        text-transform: uppercase;
+        letter-spacing: 2.7px; /* Fonte Barlow Condensed pede esse respiro */
+    }
+
+    /* HOVER: Sublinhado suave ao passar o mouse */
+    .primary-navigation a:hover {
+        border-bottom: 3px solid rgba(255, 255, 255, 0.5) !important;
+    }
+
+    /* ACTIVE: Sublinhado fixo na página onde o usuário está */
+    .primary-navigation li.active a {
+        border-bottom: 3px solid white !important;
+    }
+
+    .logo {
+        width: 48px;
+        height: 48px;
+    }
+}
+/* =======================================================
+   CORREÇÃO DAS BOLINHAS (DOT INDICATORS)
+   ======================================================= */
+   
+/* 1. Alinha as bolinhas lado a lado */
+.dot-indicators {
+    display: flex;
+    justify-content: center; /* No mobile, centralizado */
+    gap: 1.5rem; /* Espaço entre elas */
+    border: 0; /* Garante que não tenha borda no container */
+}
+
+/* 2. Estilo da Bolinha */
+.dot-indicators button {
+    cursor: pointer;
+    border: 0;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background-color: rgba(255, 255, 255, 0.17); /* Cor inativa */
+    padding: 0; /* Remove preenchimento interno */
+    
+    /* TRUQUE PARA ESCONDER O TEXTO (Se a classe sr-only falhar) */
+    font-size: 0; 
+    overflow: hidden; 
+    color: transparent;
+}
+
+/* Estado Hover (Passar o mouse) */
+.dot-indicators button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Estado Ativo (Bolinha Branca) */
+.dot-indicators button[aria-selected="true"] {
+    background-color: white;
+}
+
+/* 3. Ajuste para Desktop */
+@media (min-width: 45em) {
+    .dot-indicators {
+        justify-content: flex-start; /* Alinha à esquerda no PC */
+    }
+}

@@ -1,0 +1,233 @@
+/* =======================================================
+   1. FUNDO DA PÁGINA (BACKGROUND)
+   ======================================================= */
+/* Versão Mobile (Padrão) */
+body.home {
+    background-image: url('../assets/home/background-home-mobile.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    
+    /* Centraliza o conteúdo verticalmente na tela do celular */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* =======================================================
+   2. LAYOUT DO CONTEÚDO (GRID CONTAINER)
+   ======================================================= */
+/* Mobile: Tudo em uma coluna, centralizado */
+.grid-container--home {
+    padding-inline: 1.5rem;
+    padding-bottom: 2rem;
+    padding-top: 6rem; 
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; 
+    gap: 2rem;
+    
+    text-align: center;
+    min-height: 80vh; 
+}
+
+/* Agrupamento dos textos */
+.grid-container--home > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+/* =======================================================
+   3. TIPOGRAFIA ESPECÍFICA DA HOME (MOBILE)
+   ======================================================= */
+
+/* O Subtítulo: "SO, YOU WANT TO TRAVEL TO" */
+h5.text-accent {
+    font-family: var(--ff-sans-cond); /* Barlow Condensed */
+    font-size: 1rem;       
+    letter-spacing: 2.7px; 
+    color: var(--clr-light);
+    white-space: nowrap;   
+    margin-bottom: 0;
+}
+
+/* O Título Principal: "SPACE" */
+h1 {
+  font-family: 'Bellefair', serif;
+  font-size: 5rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 0; 
+  line-height: 1;
+}
+/* O Parágrafo */
+.grid-container--home p {
+    color: var(--clr-light);
+    max-width: 45ch;      
+    font-size: 0.93rem;    
+    line-height: 1.6;
+    margin-top: 1rem;
+    font-family: 'Bellefair', serif;
+    
+}
+
+/* =======================================================
+   4. O BOTÃO "EXPLORE" (MOBILE)
+   ======================================================= */
+.large-button {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    
+    width: 9.375rem;  
+    height: 9.375rem; 
+    border-radius: 50%;
+    
+    background-color: var(--clr-white);
+    color: var(--clr-dark);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: var(--ff-serif);
+    font-size: 1.25rem;
+    letter-spacing: 1.25px;
+}
+
+/* Efeito de Aura (Hover) */
+.large-button::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.large-button:hover::after {
+    transform: scale(1.5);
+}
+
+
+/* =======================================================
+   5. TABLET (Telas médias: > 35em / 560px)
+   ======================================================= */
+@media (min-width: 35em) {
+    body.home {
+        background-image: url('../assets/home/background-home-tablet.jpg');
+    }
+
+    h1 {
+        font-size: 9.375rem; 
+    }
+
+    .large-button {
+        width: 15rem;  
+        height: 15rem;
+        font-size: 2rem; 
+    }
+}
+
+
+/* =======================================================
+   6. DESKTOP (Telas grandes: > 45em / 720px)
+   ======================================================= */
+@media (min-width: 45em) {
+ body.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('../assets/home/background-home-desktop.jpg');
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 4rem;
+}
+
+.grid-container--home {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  max-width: 80rem;
+  margin-inline: auto;
+  width: 100%;
+  gap: 6rem;
+}
+
+  .grid-container--home {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    text-align: left;
+    max-width: 80rem;
+    margin-inline: auto;
+    width: 100%;
+    gap: 6rem; 
+  }
+
+  .grid-container--home > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 2rem; 
+    margin-top: 6rem; 
+  }
+
+ h5.text-accent {
+    font-family: var(--ff-serif) !important; 
+    font-size: 1.75rem;
+    letter-spacing: 4.75px;
+    font-weight: 400;
+    color: var(--clr-light);
+    text-transform: uppercase;
+
+    
+     
+  }
+
+ h1 {
+  font-family: 'Bellefair', serif;
+  font-size: 8rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 0; 
+  line-height: 1;
+}
+
+ .grid-container--home p {
+  font-family: 'Barlow';
+  font-size: 1.125rem; 
+  font-weight: 300; 
+  color: #d0d6f9; 
+  max-width: 28rem;
+  line-height: 1.75;
+}
+
+ .large-button {
+  font-family: 'Bellefair', serif;
+  font-size: 2rem;
+  color: #0b0d17;
+  background-color: white;
+  border-radius: 50%;
+  width: 15rem;
+  height: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2rem; 
+  transition: all 0.3s ease;
+}
+}
