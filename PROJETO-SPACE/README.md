@@ -35,10 +35,7 @@ Os usuários devem ser capazes de:
 
 - URL da solução:https://github.com/marcosprog832/PROJETO-SPACE.git
 - URL do site ao vivo:https://projetofront-drab.vercel.app/index.html
-<<<<<<< HEAD:PROJETO-SPACE/space-tourism-website-main/README.md
 
-=======
->>>>>>> bb2bf8a (Atualização):README.md
 ## Meu processo
 
 ### Construído com
