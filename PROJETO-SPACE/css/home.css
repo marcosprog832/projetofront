@@ -48,7 +48,7 @@ body.home {
 
 /* O Subtítulo: "SO, YOU WANT TO TRAVEL TO" */
 h5.text-accent {
-    font-family: var(--ff-sans-cond); /* Barlow Condensed */
+    font-family: var(--ff-sans-cond); 
     font-size: 1rem;       
     letter-spacing: 2.7px; 
     color: var(--clr-light);

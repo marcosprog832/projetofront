@@ -6,11 +6,8 @@ body.crew {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    
-    /* Trava a altura na tela do celular para não rolar */
     height: 100dvh; 
     overflow: hidden;
-    
     display: flex;
     flex-direction: column;
 }
@@ -18,7 +15,6 @@ body.crew {
 /* O Grid da Tripulação */
 .grid-container--crew {
     display: grid;
-    /* Mantém a estrutura: Título, Texto, Bolinhas, e o resto para a Imagem */
     grid-template-rows: min-content min-content min-content 1fr;
     grid-template-areas: 
         "title"
@@ -30,9 +26,9 @@ body.crew {
     height: 100%;
     
     /* --- ESPAÇAMENTOS NORMAIS (Texto respira) --- */
-    row-gap: 1.5rem; /* Espaço bom entre os blocos */
+    row-gap: 1.5rem; 
     padding-inline: 1.5rem;
-    padding-top: 6rem; /* Espaço padrão do topo */
+    padding-top: 6rem; 
     padding-bottom: 0;
     
     text-align: center;
@@ -88,7 +84,7 @@ body.crew {
     color: var(--clr-light);
     font-size: 0.95rem;
     max-width: 45ch;
-    /* Removemos o limite de altura do texto aqui */
+   
 }
 
 /* Bolinhas */
@@ -97,7 +93,7 @@ body.crew {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    padding-top: 1rem; /* Um pouco mais de espaço antes das bolinhas */
+    padding-top: 1rem; 
     margin: 0;
 }
 
@@ -129,8 +125,8 @@ body.crew {
     position: relative;
     border-top: 1px solid rgba(66, 64, 64, 0.366);
     
-    padding-bottom: 1rem; /* Afasta o pé da imagem da borda da tela */
-    padding-inline: 1rem; /* Afasta das laterais também */
+    padding-bottom: 1rem; 
+    padding-inline: 1rem; 
     
     overflow: hidden; 
 }
@@ -139,8 +135,6 @@ body.crew {
     width: auto;
     height: 100%;
     max-width: 100%;
-    
-    /* Garante que a imagem diminua proporcionalmente para caber no espaço */
     object-fit: contain; 
     object-position: bottom center;
 }
@@ -154,7 +148,7 @@ body.crew {
 
     /* No Tablet, a ordem muda: Titulo -> Texto -> Dots -> Imagem (embaixo) */
     .grid-container--crew {
-        padding-bottom: 0; /* Imagem cola no chão */
+        padding-bottom: 0; 
         grid-template-areas: 
             "title"
             "content"
@@ -173,7 +167,7 @@ body.crew {
     
     .grid-container--crew > picture {
         max-width: 50%;
-        border-bottom: 0; /* Remove a linha */
+        border-bottom: 0; 
     }
 }
 
@@ -201,7 +195,7 @@ body.crew {
             ". content image ."
             ". dots image .";
             
-        justify-items: start; /* Tudo alinhado à esquerda */
+        justify-items: start; 
         text-align: left;
         column-gap: 2rem;
         
@@ -216,13 +210,13 @@ body.crew {
     }
 
     /* --- RESET DA IMAGEM (IMPORTANTE) --- */
-    /* Isso desfaz as gambiarras que fizemos no Mobile (sombra, tamanho fixo, padding) */
+    
     .grid-container--crew > picture {
         grid-area: image;
         
         /* 1. DEIXE O CONTAINER OCUPAR A COLUNA INTEIRA */
         width: 100%;
-        max-width: 100%; /* Era 90%, isso travava o crescimento */
+        max-width: 100%; 
         
         justify-self: center;
         align-self: end; 
@@ -235,21 +229,14 @@ body.crew {
 
     /* Libera o tamanho da imagem para ficar grande no desktop */
     .grid-container--crew > picture img {
-        /* Cancela a trava de 300px do celular */
         max-height: 100% !important; 
-        
-        /* 3. Manda a imagem ocupar todo o espaço do container destravado */
         width: auto; 
-        max-width: 100%; /* Garante que ela não estoure a tela horizontalmente */
-        
-        /* Se quiser aumentar a altura máxima permitida no monitor */
+        max-width: 100%; 
         height: auto;
-        max-height: 80vh !important; /* Permite ir até 80% da altura da tela */
+        max-height: 80vh !important; 
         
         object-fit: contain;
     }
-
-    /* --- RESTO DO ESTILO DESKTOP --- */
 
     /* Título */
     .numbered-title {
@@ -265,7 +252,7 @@ body.crew {
     /* Bolinhas */
     .dot-indicators {
         justify-self: start;
-        margin-top: 2rem; /* Afasta do texto */
+        margin-top: 2rem; 
     }
 }
 
