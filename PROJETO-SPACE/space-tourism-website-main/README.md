@@ -33,7 +33,7 @@ Os usuários devem ser capazes de:
 
 ### Links
 
-- URL da solução: _adicione a URL da solução aqui_
+- URL da solução:https://github.com/marcosprog832/PROJETO-SPACE.git
 - URL do site ao vivo: _adicione a URL do deploy aqui_
 
 ## Meu processo
@@ -44,10 +44,22 @@ Os usuários devem ser capazes de:
 - CSS (propriedades customizadas)
 - Flexbox
 - CSS Grid
-- React
-- Next.js
-- Tailwind
+- JAVA SCRIPT
 
 ### O que aprendi
 
-Use esta seção para resumir os principais aprendizados durante o desenvolvimento do projeto. Escrever sobre isso ajuda a reforçar o conhecimento.
+Deixei o site "firme": Aprendi a travar o tamanho de algumas partes para que, quando você clicar em um planeta, o resto da página não fique pulando para cima e para baixo.
+
+Acertei as letras: Usei dois tipos de letra: uma mais elegante para os títulos principais e outra mais limpa para os textos, para ficar fácil de ler.
+
+Ficou bom no celular: Ajustei o tamanho das coisas para que nada fique cortado ou apertado demais quando alguém abrir o site pelo telefone.
+
+### Desenvolvimento contínuo
+Para execicios futuros pretendo , melhor animações e integrações da pagina usando  Next.js com TypeScript/react.
+
+### Autor 
+Marcos Douglas Gomes Lisboa , Desenvolvedor Web  - Sinop-MT.
+
+### Agradecimentos
+
+Agradecer a GB pela oportunidade de mostras minhas habiidades e conhecimentos na are de programação web , sei que foi um desafio divertido , de ver tudo acontece e sendo desenvolvido.
