@@ -34,7 +34,7 @@ Os usuários devem ser capazes de:
 ### Links
 
 - URL da solução:https://github.com/marcosprog832/PROJETO-SPACE.git
-- URL do site ao vivo: _adicione a URL do deploy aqui_
+- URL do site ao vivo:https://projetofront-drab.vercel.app/index.html
 
 ## Meu processo
 
