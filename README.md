@@ -29,13 +29,16 @@ Os usuários devem ser capazes de:
 
 ![Screenshot da solução](./screenshot.jpg)
 
-> Adicione aqui uma captura de tela da sua solução. Você pode usar ferramentas como o Firefox (opção “Tirar captura de tela”) ou extensões como FireShot.
+
 
 ### Links
 
 - URL da solução:https://github.com/marcosprog832/PROJETO-SPACE.git
 - URL do site ao vivo:https://projetofront-drab.vercel.app/index.html
+<<<<<<< HEAD:PROJETO-SPACE/space-tourism-website-main/README.md
 
+=======
+>>>>>>> bb2bf8a (Atualização):README.md
 ## Meu processo
 
 ### Construído com
